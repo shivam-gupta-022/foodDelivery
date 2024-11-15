@@ -1,6 +1,7 @@
-
+require('dotenv').config()
 global.foodData = require('./db')(function call(err, data, CatData) {
-  // console.log(data)
+  //  console.log(data)
+    // console.log(CatData)
   if(err) console.log(err);
   global.foodData = data;
   global.foodCategory = CatData;
@@ -8,7 +9,7 @@ global.foodData = require('./db')(function call(err, data, CatData) {
 
 const express = require('express')
 const app = express()
-const port = 5000
+const port = process.env.PORT || 4000
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(

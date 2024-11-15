@@ -33,6 +33,7 @@ router.post('/createuser', [
             email: req.body.email,
             location: req.body.location
         }).then(user => {
+            console.log('hellocheck')
             const data = {
                 user: {
                     id: user.id
@@ -40,6 +41,7 @@ router.post('/createuser', [
             }
             const authToken = jwt.sign(data, jwtSecret);
             success = true
+            console.log(success)
             res.json({ success, authToken })
         })
             .catch(err => {
